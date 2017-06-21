@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @game.name
+%p
+  %b Description:
+  = @game.description
+%p
+  %b Activate digest:
+  = @game.activate_digest
+%p
+  %b Activated:
+  = @game.activated
+%p
+  %b Activated at:
+  = @game.activated_at
+
+= link_to 'Edit', edit_game_path(@game)
+\|
+= link_to 'Back', games_path
