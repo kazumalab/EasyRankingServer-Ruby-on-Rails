@@ -1,41 +1,15 @@
-%nav.nav
-  .nav-left
-    %a.nav-item{href: "#{root_url}"}
-      %img{:alt => "Bulma logo", :src => "http://bulma.io/images/bulma-logo.png"}/
-  .nav-center
-    %a.nav-item{href: "https://github.com/kazumalab/RankingServerForUnity"}
-      %span.icon
-        %i.fa.fa-github
-    %a.nav-item
-      %span.icon
-        %i.fa.fa-twitter
-  %span.nav-toggle
-    %span
-    %span
-    %span
-  .nav-right.nav-menu
-    %a.nav-item
-      Home
-    %a.nav-item
-      Documentation
-    %a.nav-item
-      Blog
-    .nav-item
-      .field.is-grouped
+%nav.navbar.navbar-default
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %a.navbar-brand{:href => "#{root_url}"} Brand
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "#{games_path}"} Games
         - if user_signed_in?
-          %p.control
-          %a.button{href: "#{edit_user_registration_path}"}
-            %span.icon
-              %i.fa.fa-sign-in
-            %span= current_user.username
-          %a.button{href: "/games/new"}
-            %span.icon
-              %i.fa.fa-sign-in
-            %span NewGame!
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "button"
+          %li
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
         - else
-          %p.control
-            %a.button{href: "#{new_user_session_path}"}
-              %span.icon
-                %i.fa.fa-sign-in
-              %span ログイン
+          %li
+            = link_to 'ログイン', new_user_session_path
+

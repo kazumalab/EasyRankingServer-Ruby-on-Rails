@@ -3,9 +3,9 @@ class CreateGames < ActiveRecord::Migration[5.1]
     create_table :games do |t|
       t.string :name
       t.text :description
-      t.string :activate_digest
-      t.boolean :activated
-      t.datetime :activated_at
+      t.string :access_token_digest
+      t.string :access_key
+      t.datetime :access_token_created_at
 
       t.timestamps
     end

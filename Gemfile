@@ -18,6 +18,8 @@ gem 'haml-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'bootstrap-sass'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

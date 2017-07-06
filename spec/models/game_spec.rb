@@ -1,26 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  describe "#create" do
+  describe "#new" do
+    let(:game) { FactoryGirl.build(:game) }
+    subject { game }
     context 'valid' do
-      let(:game) { Game.new(name: "legend of zelda") }
-      it do
-        expect(game).to be_valid
-      end
+      before { game.name = "legend of zelda" }
+      it { is_expected.to be_valid }
     end
 
     context 'invalid empty' do
-      let(:game) { Game.new(name: "") }
-      it do
-        expect(game).to be_invalid
-      end
+      before { game.name = " " }
+      it { is_expected.to be_invalid }
     end
 
     context 'invalid too long max 30' do
-      let(:game) { Game.new(name: "#{"a" * 31}") }
-      it do
-        expect(game).to be_invalid
-      end
+      before { game.name = "a" * 31 }
+      it { is_expected.to be_invalid }
+    end
+  end
+
+  describe '.create_token' do
+    let(:game) { FactoryGirl.create(:game) }
+    context 'token exit' do
+      it { expect(game.access_token_digest).not_to eq(nil) }
+    end
+
+    context 'key exit' do
+      it { expect(game.access_key).not_to eq(nil) }
+    end
+
+    context 'token create exit' do
+      it { expect(game.access_token_created_at).not_to eq(nil) }
     end
   end
 end

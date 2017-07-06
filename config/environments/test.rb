@@ -37,6 +37,19 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # create mock data for Omnioauth in RSpec.
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:twitter] = {
+    provider: 'twitter',
+    uid: '123545',
+    info: {
+      username: 'JonnieHallman',
+      image: ""
+    }
+  }
+
+  Rails.application.routes.default_url_options[:host] = 'lvh.me'
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
