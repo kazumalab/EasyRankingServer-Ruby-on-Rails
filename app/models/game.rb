@@ -1,3 +1,11 @@
+# --------- Game Schema -------------
+# string   : name
+# string   : description
+# string   : access_token_digest
+# string   : access_key
+# datetime : access_token_created_at
+# -----------------------------------
+
 class Game < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
 
