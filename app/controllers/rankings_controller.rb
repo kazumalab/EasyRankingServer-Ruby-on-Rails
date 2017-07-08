@@ -1,11 +1,13 @@
 class RankingsController < ApplicationController
 
   def create
-    @ranking = Ranking.new(ranking_params)
-    @authenticator = Authenticator.new(@ranking, params[:key], params[:access_token])
+    @authenticator = Authenticator.new(Ranking.new(ranking_params), params[:key], params[:access_token])
+    
     if @authenticator.save
+      # ホントはresponse.statusを200
       redirect_to games_path
     else
+      # response.statusを302? Permission denied.
       redirect_to root_path
     end
   end

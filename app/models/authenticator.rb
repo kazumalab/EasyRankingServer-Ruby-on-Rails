@@ -6,8 +6,8 @@
 class Authenticator
 
   attr_accessor :ranking
-  attr_accessor :game
-  attr_accessor :access_token
+  attr_reader :game
+  attr_reader :access_token
 
   def initialize(ranking, key, token)
     @ranking = ranking
@@ -17,7 +17,7 @@ class Authenticator
 
   def save
     return false unless @game
-    return false unless @access_token == @game.access_token_digest
+    return false unless access_token == @game.access_token_digest
     
     @ranking.game_id = @game.id
     @ranking.save
