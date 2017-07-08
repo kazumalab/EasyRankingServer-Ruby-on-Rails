@@ -9,9 +9,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
   validates :email, unfairness: true
+  validates :username, presence: true
+  
   class << self
     def from_omniauth(auth)
       user = User.find_by(provider: auth[:provider], uid: auth[:uid])

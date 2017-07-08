@@ -14,6 +14,11 @@ describe User, type: :model do
     let(:user) { FactoryGirl.build(:user) }
     subject { user }
 
+    context "when empty username, faild" do
+      before { user.username = nil }
+      it { is_expected.to be_invalid }
+    end
+
     context "when not found email, faild" do
       before { user.email = nil }
       it { is_expected.to be_invalid }
