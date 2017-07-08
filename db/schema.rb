@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706135125) do
+ActiveRecord::Schema.define(version: 20170708061108) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20170706135125) do
     t.string "access_token_digest"
     t.string "access_key"
     t.datetime "access_token_created_at"
+  end
+
+  create_table "rankings", force: :cascade do |t|
+    t.string "nickname"
+    t.string "score"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

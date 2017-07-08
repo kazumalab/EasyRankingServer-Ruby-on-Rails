@@ -7,6 +7,7 @@
 # -----------------------------------
 
 class Game < ApplicationRecord
+  has_many :rankings
   validates :name, presence: true, length: { maximum: 30 }
 
   before_save :create_token
