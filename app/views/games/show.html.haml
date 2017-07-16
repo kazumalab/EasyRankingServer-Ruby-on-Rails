@@ -7,14 +7,14 @@
   %b Description:
   = @game.description
 %p
-  %b Activate digest:
-  = @game.activate_digest
+  %b Token:
+  = @game.access_token_digest
 %p
-  %b Activated:
-  = @game.activated
-%p
-  %b Activated at:
-  = @game.activated_at
+  %b Game Key:
+  = @game.access_key
+
+#ranking_list
+  = render @game.rankings
 
 = link_to 'Edit', edit_game_path(@game)
 \|
