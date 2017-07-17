@@ -5,9 +5,6 @@
     %tr
       %th Name
       %th Description
-      %th Activate digest
-      %th Activated
-      %th Activated at
       %th
       %th
       %th
@@ -17,9 +14,6 @@
       %tr
         %td= game.name
         %td= game.description
-        %td= game.activate_digest
-        %td= game.activated
-        %td= game.activated_at
         %td= link_to 'Show', game
         %td= link_to 'Edit', edit_game_path(game)
         %td= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }

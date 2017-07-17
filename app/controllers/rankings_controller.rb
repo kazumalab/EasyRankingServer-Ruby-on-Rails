@@ -7,11 +7,11 @@ class RankingsController < ApplicationController
     respond_to do |format|
       if @authenticator.save
         # ホントはresponse.statusを200
-        format.html { redirect_to games_path, notice: 'Create Ranking!' }
+        format.html { redirect_to games_path, notice: 'Create Ranking!', status: 200 }
         format.js
       else
         # Permission denied.
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, status: 400 }
         format.js
       end
     end
