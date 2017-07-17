@@ -25,8 +25,7 @@ class Authenticator
 
   def get_ranking
     if authenticated?
-      rankings = @game.rankings
-      return rankings
+      return game.rankings
     else
       return nil
     end
