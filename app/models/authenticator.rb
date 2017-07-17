@@ -22,4 +22,23 @@ class Authenticator
     @ranking.game_id = @game.id
     @ranking.save
   end
+
+  def get_ranking
+    if authenticated?
+      rankings = @game.rankings
+      return rankings
+    else
+      return nil
+    end
+  end
+
+  private
+
+  def authenticated?
+    return false unless @game
+    # looks good, use ActiveSupport::SecurityUtils.variable_size_secure_compare
+    return false unless access_token == @game.access_token_digest
+
+    return true
+  end
 end
