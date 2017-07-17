@@ -23,7 +23,7 @@ module Api
         @authenticator = Authenticator.new(nil, params[:key], params[:access_token])
         @rankings = @authenticator.get_ranking
         if @rankings
-          render json: @rankings, status: 200
+          render json: @rankings, only:[:nickname, :score], status: 200
         else
           redirect_to root_path, status: 400
         end
